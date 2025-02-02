@@ -78,6 +78,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 print("error creating user: \(error)")
                 return
             }
+            Auth.auth().currentUser?.sendEmailVerification()
             self.dismiss(animated: true)
             print("user created successfully")
         }
