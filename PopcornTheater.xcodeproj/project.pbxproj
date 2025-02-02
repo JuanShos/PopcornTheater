@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AD1EB78F2D4DC740003C05F9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AD1EB78E2D4DC740003C05F9 /* FirebaseAuth */; };
+		AD1EB7912D4DC740003C05F9 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = AD1EB7902D4DC740003C05F9 /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AD0FBD802D42526D00DC00DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD1EB7912D4DC740003C05F9 /* FirebaseCore in Frameworks */,
+				AD1EB78F2D4DC740003C05F9 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D3C68CB84A9D41BB7713F17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AD0FBD5D2D42526B00DC00DA = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +106,7 @@
 				AD0FBD822D42526D00DC00DA /* PopcornTheaterTests */,
 				AD0FBD8C2D42526D00DC00DA /* PopcornTheaterUITests */,
 				AD0FBD672D42526B00DC00DA /* Products */,
+				8D3C68CB84A9D41BB7713F17 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +140,8 @@
 			);
 			name = PopcornTheater;
 			packageProductDependencies = (
+				AD1EB78E2D4DC740003C05F9 /* FirebaseAuth */,
+				AD1EB7902D4DC740003C05F9 /* FirebaseCore */,
 			);
 			productName = PopcornTheater;
 			productReference = AD0FBD662D42526B00DC00DA /* PopcornTheater.app */;
@@ -147,8 +164,6 @@
 				AD0FBD822D42526D00DC00DA /* PopcornTheaterTests */,
 			);
 			name = PopcornTheaterTests;
-			packageProductDependencies = (
-			);
 			productName = PopcornTheaterTests;
 			productReference = AD0FBD7F2D42526D00DC00DA /* PopcornTheaterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -170,8 +185,6 @@
 				AD0FBD8C2D42526D00DC00DA /* PopcornTheaterUITests */,
 			);
 			name = PopcornTheaterUITests;
-			packageProductDependencies = (
-			);
 			productName = PopcornTheaterUITests;
 			productReference = AD0FBD892D42526D00DC00DA /* PopcornTheaterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -208,6 +221,9 @@
 			);
 			mainGroup = AD0FBD5D2D42526B00DC00DA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AD1EB78D2D4DC740003C05F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD0FBD672D42526B00DC00DA /* Products */;
 			projectDirPath = "";
@@ -569,6 +585,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD1EB78D2D4DC740003C05F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD1EB78E2D4DC740003C05F9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD1EB78D2D4DC740003C05F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AD1EB7902D4DC740003C05F9 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD1EB78D2D4DC740003C05F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD0FBD5E2D42526B00DC00DA /* Project object */;
 }

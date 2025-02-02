@@ -20,7 +20,7 @@ class MovieResponse: Respond {
         Task {
             do {
                 let result = try await apiCall.nowPlayingCalls()
-                print(result)
+                print(result, "from protocol")
             } catch {
                 print(error)
             }
