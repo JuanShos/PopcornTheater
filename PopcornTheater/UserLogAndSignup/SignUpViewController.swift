@@ -12,6 +12,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passworldTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    
     
     var emailString = ""
     var passwordString = ""
@@ -67,8 +69,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpCompleteButton(_ sender: UIButton) {
-        print(emailString, passwordString, "this is from the email and password string")
-        createUser(email: emailString, password: passwordString)
+        if emailString.isEmpty == true && passwordString.isEmpty == true {
+            
+            print("shits empty ")
+        } else {
+            createUser(email: emailString, password: passwordString)
+        }
     }
     
     //MARK: SOME WEIRD ERROR: TELLS ME PASSWORD HAS TO BE 6 CHARACTERS OR LONGER EVEN WHEN THR EREQUIRMENTS ARE MET
@@ -81,6 +87,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().currentUser?.sendEmailVerification()
             self.dismiss(animated: true)
             print("user created successfully")
+        }
+    }
+    
+    
+    // MARK: SO USER DOESNT JUST SEND EMPTY INFORMATION; DO MORE WITH THIS LATER
+    func checkTextField() {
+        if emailString.isEmpty == true && passwordString.isEmpty == true {
+            signUpButton.isEnabled = false
         }
     }
     
