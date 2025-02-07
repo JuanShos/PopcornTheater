@@ -6,15 +6,42 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+
 
 class FirstViewController: UIViewController {
     
+    var currentUser = Auth.auth().currentUser!
+    
+    @IBOutlet weak var myTitleAndButton: UIStackView!
     
     var nowPlayingRespond = MovieResponse()
 
+   
+    
+    
+    
     override func viewDidLoad() {
-        nowPlayingRespond.nowPlayingResponse()
+        self.view.bringSubviewToFront(myTitleAndButton)
+        //runThisUser()
+        //nowPlayingRespond.nowPlayingResponse()
     }
+    
+    
+    @IBAction func showUsersProfile(_ sender: UIButton) {
+        print("show users profile")
+    }
+    
+    
+    
+  
+    func runThisUser() {
+        let user = currentUser.uid
+        print(user)
+    }
+    
+    
     
 
 }

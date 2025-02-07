@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseCore
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -18,12 +20,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     var emailString = ""
     var passwordString = ""
     let textField = UITextField()
-    
+    var db: Firestore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passworldTextField.delegate = self
+        db = Firestore.firestore()
         print("this will be the signup page!")
     }
     
@@ -84,11 +87,53 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 print("error creating user: \(error)")
                 return
             }
+            guard let userId = Auth.auth().currentUser?.uid else { return }
             Auth.auth().currentUser?.sendEmailVerification()
-            self.dismiss(animated: true)
+            self.saveUserInfo(uid: userId)
+            //self.createTheUser(usersID: userId)
+            
+            //self.dismiss(animated: true)
             print("user created successfully")
         }
     }
+    
+    // MARK: THIS RIHT HERE THE RIGHT WAY TO DO IT
+    func saveUserInfo(uid: String) {
+        let db = Firestore.firestore()
+        let userref = db.collection("myUsers").document(uid)
+        let userData: [String: Any] = [
+            "name": "your mom",
+            "email": "thisemail",
+            "age": 27
+            ]
+        userref.setData(userData) { error in
+            if let error = error {
+                print("something went wrong \(error)")
+            } else {
+                print("saved successfully")
+            }
+            
+        }
+        
+    }
+    
+    func createTheUser(usersID: String) {
+        Task {
+            do {
+                let ref = try await db.collection("users/\(usersID)/userData").addDocument(data: [
+                    "name" : "juan's new collection",
+                    "lastname" : "jndcjon",
+                    "age": 26,
+                    "username": "supercoolman"
+                ])
+                print("document added with ID   \(ref.documentID)")
+                print(usersID)
+            } catch {
+                print("Error adding document \(error)")
+            }
+        }
+    }
+    
     
     
     // MARK: SO USER DOESNT JUST SEND EMPTY INFORMATION; DO MORE WITH THIS LATER
